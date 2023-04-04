@@ -19,9 +19,3 @@ class Solution {
         return $minDepth;
     }
 }
-
-require '../DataStructure.BinaryTree.php';
-
-$tree = createBinaryTree([2,null,3,null,4,null,5,null,6]);
-$solution = new Solution();
-echo $solution->minDepth($tree);
