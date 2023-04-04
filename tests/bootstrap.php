@@ -12,19 +12,8 @@ class TreeNode {
     }
 }
 
-/**
- * Build a binary tree from an array of values.
- * Null values indicate the absense of child nodes and the end of the subtree.
- * It is not necessary to include null values for non existant nodes (only where the subtree ends), IE:
- * [1,null,5,null,84,null,21] is a tree with a depth of 4 that has a single node at each level and always branches to the right.
- *      1
- *       \
- *        5
- *         \
- *          84
- *           \
- *            21
- */
+
+// Build a binary tree from an array of values, as typically supplied by LeetCode.
 function createBinaryTree(array $values): TreeNode | NULL
 {
     if (end($values) === FALSE || end($values) === NULL) {
@@ -49,4 +38,37 @@ function createBinaryTree(array $values): TreeNode | NULL
         $nextQueue = array();
     }
     return $root;
+}
+
+// Class definition for single linked list nodes used for LeetCode solutions.
+class ListNode {
+    public $val = 0;
+    public $next = null;
+    function __construct($val = 0, $next = null) {
+        $this->val = $val;
+        $this->next = $next;
+    }
+}
+
+// Build a single linked list from an array of values, as typically provided by LeetCode.
+function createLinkedList(array $values): ListNode
+{
+    $sentHead = new ListNode(NULL, NULL);
+    $node = $sentHead;
+    foreach ($values as $value) {
+        $node->next = new ListNode($value, NULL);
+        $node = $node->next;
+    }
+    return $sentHead->next;
+}
+
+// Build an array containing the values of each node in a linked list.
+function returnListValues(ListNode $list): array
+{
+    $listValues = array();
+    while ($list != NULL) {
+        $listValues[] = $list->val;
+        $list = $list->next;
+    }
+    return $listValues;
 }
